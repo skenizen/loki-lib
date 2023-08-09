@@ -1197,7 +1197,7 @@ void * SmallObjAllocator::Allocate( ::std::size_t numBytes, bool doThrow )
 
     if ( ( nullptr == place ) && doThrow )
     {
-#ifdef _MSC_VER
+#if (_MSC_VER <= 1929)
         throw std::bad_alloc( "could not allocate small object" );
 #else
         // GCC did not like a literal string passed to std::bad_alloc.
